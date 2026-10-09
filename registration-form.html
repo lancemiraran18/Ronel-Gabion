@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e8f5e9, #f5fdf6);
+            padding: 40px 20px;
+        }
+
+        .registration-container {
+            width: 100%;
+            max-width: 750px;
+            margin: auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .registration-container h1 {
+            text-align: center;
+            color: #1b5e20;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 7px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d5d5d5;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #43a047;
+            box-shadow: 0 0 0 3px rgba(67, 160, 71, 0.12);
+        }
+
+        .terms {
+            margin-top: 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .terms input {
+            margin-top: 2px;
+            accent-color: #2e7d32;
+        }
+
+        .terms a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .register-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #2e7d32;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #1b5e20;
+            transform: translateY(-1px);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #2e7d32;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .registration-container {
+                padding: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="registration-container">
+        <h1>Create an Account</h1>
+        <p class="subtitle">Fill in all the required information below</p>
+
+        <form id="registrationForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="Enter first name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Enter last name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="middleName">Middle Name</label>
+                    <input
+                        type="text"
+                        id="middleName"
+                        name="middleName"
+                        placeholder="Enter middle name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Birth Date</label>
+                    <input
+                        type="date"
+                        id="birthdate"
+                        name="birthdate"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" selected disabled>Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="09XXXXXXXXX"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="address">Complete Address</label>
+                    <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        placeholder="Enter complete address"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Create a username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course / Program</label>
+                    <input
+                        type="text"
+                        id="course"
+                        name="course"
+                        placeholder="Enter course or program"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm your password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="studentId">Student ID</label>
+                    <input
+                        type="text"
+                        id="studentId"
+                        name="studentId"
+                        placeholder="Enter student ID"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="terms">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">
+                    I agree to the
+                    <a href="#">Terms and Conditions</a>.
+                </label>
+            </div>
+
+            <button type="submit" class="register-btn">
+                Create Account
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="login-form.html">Login</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const message = document.getElementById("message");
+
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match.";
+                message.style.color = "#d32f2f";
+                return;
+            }
+
+            message.textContent = "Registration successful!";
+            message.style.color = "#2e7d32";
+
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>

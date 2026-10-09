@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f0e8">
+    <meta name="description" content="Official activity homepage of Ronel Gabion, BSIT-3B.">
+    <title>RONEL GABION — Digital Space</title>
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        :root {
+            --paper: #f5f0e8;
+            --ink: #191916;
+            --orange: #ff542e;
+            --gray: #78766f;
+            --line: #d8d2c8;
+            --white: #fffdf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Top navigation */
+
+        .topbar {
+            min-height: 76px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .wordmark {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.7px;
+        }
+
+        .logo-box {
+            display: grid;
+            place-items: center;
+            width: 37px;
+            height: 37px;
+            background: var(--orange);
+            color: white;
+            font-size: 19px;
+            font-weight: 700;
+            transform: rotate(-5deg);
+        }
+
+        .top-meta {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .online {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--orange);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            border-color: var(--orange);
+        }
+
+        /* Main editorial layout */
+
+        .page {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 44px 6% 70px;
+        }
+
+        .intro-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 27px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .intro-line .tag {
+            padding: 8px 11px;
+            color: var(--paper);
+            background: var(--ink);
+        }
+
+        .intro-line .edition {
+            color: var(--gray);
+            text-align: right;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .hero-main {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 34px 0 28px;
+        }
+
+        .micro-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            color: var(--gray);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .micro-title::before {
+            content: "";
+            width: 32px;
+            height: 3px;
+            background: var(--orange);
+        }
+
+        h1 {
+            font-size: clamp(58px, 9.1vw, 132px);
+            line-height: 0.88;
+            letter-spacing: -0.095em;
+            font-weight: 700;
+            text-transform: uppercase;
+            overflow-wrap: normal;
+        }
+
+        h1 .line {
+            display: block;
+        }
+
+        h1 .outline {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--ink);
+        }
+
+        h1 .orange {
+            color: var(--orange);
+        }
+
+        .hero-bottom {
+            margin-top: 44px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: end;
+            gap: 24px;
+        }
+
+        .hero-copy {
+            max-width: 410px;
+            color: #5f5c55;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .hero-copy strong {
+            color: var(--ink);
+        }
+
+        .arrow-mark {
+            width: 68px;
+            height: 68px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border: 1px solid var(--ink);
+            border-radius: 50%;
+            font-size: 34px;
+            transition: 0.25s ease;
+        }
+
+        .arrow-mark:hover {
+            color: white;
+            background: var(--ink);
+            transform: rotate(45deg);
+        }
+
+        /* Graphic panel */
+
+        .hero-art {
+            min-height: 490px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22px;
+            overflow: hidden;
+            background: var(--orange);
+            color: var(--ink);
+        }
+
+        .art-top, .art-bottom {
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .art-top span:last-child {
+            border: 1px solid var(--ink);
+            padding: 7px;
+        }
+
+        .abstract {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+        }
+
+        .big-circle {
+            position: absolute;
+            width: min(75%, 310px);
+            aspect-ratio: 1;
+            border: 2px solid var(--ink);
+            border-radius: 50%;
+            transform: translate(8%, -1%);
+        }
+
+        .big-circle::before {
+            content: "";
+            position: absolute;
+            inset: 15%;
+            border: 1px solid var(--ink);
+            border-radius: 50%;
+        }
+
+        .big-circle::after {
+            content: "";
+            position: absolute;
+            inset: 31%;
+            background: var(--paper);
+            border-radius: 50%;
+            border: 2px solid var(--ink);
+        }
+
+        .slash {
+            position: absolute;
+            width: 135%;
+            height: 75px;
+            background: var(--ink);
+            transform: rotate(-43deg);
+        }
+
+        .slash::after {
+            content: "";
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--paper);
+        }
+
+        .art-initials {
+            position: relative;
+            z-index: 1;
+            font-size: clamp(65px, 8vw, 100px);
+            letter-spacing: -0.11em;
+            font-weight: 700;
+            color: var(--paper);
+            mix-blend-mode: difference;
+        }
+
+        .corner-square {
+            position: absolute;
+            right: 25px;
+            bottom: 80px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--ink);
+            transform: rotate(12deg);
+        }
+
+        .art-bottom {
+            padding-top: 15px;
+            border-top: 1px solid rgba(25, 25, 22, 0.55);
+        }
+
+        /* Login and registration block */
+
+        .access-section {
+            margin-top: 48px;
+            padding: 28px 0;
+            border-top: 2px solid var(--ink);
+            border-bottom: 2px solid var(--ink);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .access-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -1px;
+        }
+
+        .access-title span {
+            color: var(--orange);
+        }
+
+        .access-note {
+            margin-top: 9px;
+            font-size: 12px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .access-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .access-button {
+            min-height: 62px;
+            padding: 17px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid var(--ink);
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .access-button .number {
+            color: var(--gray);
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+        }
+
+        .access-button .icon {
+            font-size: 20px;
+            transition: transform 0.25s ease;
+        }
+
+        .access-button:hover .icon {
+            transform: translate(4px, -4px);
+        }
+
+        .access-button.login {
+            background: var(--ink);
+            color: white;
+        }
+
+        .access-button.login:hover {
+            background: var(--orange);
+            color: var(--ink);
+        }
+
+        .access-button.register {
+            background: transparent;
+        }
+
+        .access-button.register:hover {
+            color: white;
+            background: var(--ink);
+        }
+
+        /* Bottom details */
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            padding-top: 40px;
+        }
+
+        .detail {
+            padding-right: 20px;
+            border-right: 1px solid var(--line);
+        }
+
+        .detail:last-child {
+            border: none;
+        }
+
+        .detail .label {
+            margin-bottom: 13px;
+            color: var(--gray);
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail h2 {
+            margin-bottom: 7px;
+            font-size: 17px;
+            letter-spacing: -0.5px;
+        }
+
+        .detail p {
+            color: var(--gray);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+
+        .footer {
+            padding: 22px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.4px;
+        }
+
+        .footer strong {
+            color: var(--orange);
+            font-weight: 500;
+        }
+
+        .footer a {
+            border-bottom: 1px solid var(--orange);
+            padding-bottom: 3px;
+        }
+
+        .footer a:hover {
+            color: var(--orange);
+        }
+
+        /* Running announcement strip */
+
+        .ticker {
+            overflow: hidden;
+            background: var(--orange);
+            color: var(--ink);
+            border-bottom: 2px solid var(--ink);
+            white-space: nowrap;
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 26s linear infinite;
+        }
+
+        .ticker-item {
+            padding: 13px 22px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .ticker-item span {
+            padding-left: 30px;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-main {
+            animation: reveal 0.7s ease both;
+        }
+
+        .hero-art {
+            animation: reveal 0.9s ease both;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Tablet layout */
+
+        @media (max-width: 900px) {
+            .page {
+                padding: 35px 5% 55px;
+            }
+
+            .hero-grid {
+                grid-template-columns: minmax(0, 1.1fr) minmax(230px, 0.8fr);
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: clamp(57px, 9vw, 91px);
+            }
+
+            .hero-art {
+                min-height: 420px;
+            }
+
+            .access-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .topbar {
+                padding: 0 5%;
+            }
+
+            .footer {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+
+        /* Mobile layout */
+
+        @media (max-width: 620px) {
+            .topbar {
+                min-height: 68px;
+                padding: 0 5%;
+            }
+
+            .wordmark {
+                font-size: 14px;
+                gap: 9px;
+            }
+
+            .logo-box {
+                width: 32px;
+                height: 32px;
+            }
+
+            .top-meta {
+                gap: 12px;
+                font-size: 9px;
+            }
+
+            .online {
+                display: none;
+            }
+
+            .page {
+                padding: 28px 5% 45px;
+            }
+
+            .intro-line {
+                font-size: 9px;
+                letter-spacing: 0.8px;
+                margin-bottom: 16px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .hero-main {
+                padding: 18px 0 0;
+            }
+
+            .micro-title {
+                margin-bottom: 23px;
+                font-size: 10px;
+            }
+
+            h1 {
+                font-size: clamp(58px, 16vw, 100px);
+                letter-spacing: -0.09em;
+            }
+
+            .hero-bottom {
+                margin-top: 29px;
+                grid-template-columns: 1fr auto;
+                gap: 12px;
+            }
+
+            .hero-copy {
+                font-size: 13px;
+            }
+
+            .arrow-mark {
+                width: 48px;
+                height: 48px;
+                font-size: 25px;
+            }
+
+            .hero-art {
+                min-height: 370px;
+            }
+
+            .big-circle {
+                width: min(70%, 270px);
+            }
+
+            .art-initials {
+                font-size: 78px;
+            }
+
+            .access-section {
+                margin-top: 32px;
+                padding: 24px 0;
+                gap: 20px;
+            }
+
+            .access-title {
+                font-size: 22px;
+            }
+
+            .access-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .access-button {
+                min-height: 57px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding-top: 24px;
+            }
+
+            .detail {
+                padding: 18px 0;
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .detail:last-child {
+                border-bottom: none;
+            }
+
+            .detail .label {
+                margin-bottom: 8px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .top-meta {
+                font-size: 8px;
+            }
+
+            .intro-line {
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .intro-line .edition {
+                max-width: 130px;
+            }
+
+            h1 {
+                font-size: 56px;
+            }
+
+            .hero-art {
+                min-height: 320px;
+            }
+
+            .art-initials {
+                font-size: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <a href="homepage.html" class="wordmark">
+            <span class="logo-box">R</span>
+            <span>RONEL GABION.</span>
+        </a>
+
+        <nav class="top-meta" aria-label="Main navigation">
+            <span class="online">
+                <span class="online-dot"></span>
+                DIGITAL SPACE
+            </span>
+            <a href="#about" class="nav-link">ABOUT ↓</a>
+        </nav>
+    </header>
+
+    <div class="ticker" aria-label="Welcome announcement">
+        <div class="ticker-track">
+            <div class="ticker-item">
+                A NEW PERSPECTIVE <span>✳</span> ACTIVITY 03 <span>✳</span>
+                BUILT TO STAND OUT <span>✳</span> RONEL GABION <span>✳</span>
+            </div>
+            <div class="ticker-item" aria-hidden="true">
+                A NEW PERSPECTIVE <span>✳</span> ACTIVITY 03 <span>✳</span>
+                BUILT TO STAND OUT <span>✳</span> RONEL GABION <span>✳</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="page">
+
+        <div class="intro-line">
+            <span class="tag">ACTIVITY 03 / HOMEPAGE</span>
+            <span class="edition">INFORMATION TECHNOLOGY<br>BSIT-3B / 2026</span>
+        </div>
+
+        <section class="hero-grid">
+            <div class="hero-main">
+                <div>
+                    <div class="micro-title">A digital introduction</div>
+
+                    <h1>
+                        <span class="line">Think</span>
+                        <span class="line outline">Beyond</span>
+                        <span class="line orange">Limits<span style="color:var(--ink)">.</span></span>
+                    </h1>
+                </div>
+
+                <div class="hero-bottom">
+                    <p class="hero-copy">
+                        Welcome to my corner of the internet.
+                        I'm <strong>Ronel Gabion</strong>, a BSIT student
+                        exploring the possibilities of technology,
+                        creativity, and digital experiences.
+                    </p>
+
+                    <a class="arrow-mark" href="#access" aria-label="Explore the website">↘</a>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-label="Abstract orange graphic">
+                <div class="art-top">
+                    <span>RG / 001</span>
+                    <span>EST. 2026</span>
+                </div>
+
+                <div class="abstract">
+                    <div class="big-circle"></div>
+                    <div class="slash"></div>
+                    <div class="art-initials">RG.</div>
+                    <div class="corner-square"></div>
+                </div>
+
+                <div class="art-bottom">
+                    <span>DESIGN THE FUTURE</span>
+                    <span>✳ 01—03</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="access-section" id="access">
+            <div>
+                <h2 class="access-title">
+                    Your next move<br>
+                    starts <span>right here.</span>
+                </h2>
+                <p class="access-note">
+                    Choose where you want to go.
+                    It's only one click away.
+                </p>
+            </div>
+
+            <div class="access-actions">
+                <a class="access-button login" href="login-form.html">
+                    <span>
+                        <span class="number">01 / ACCESS</span><br>
+                        Login to Continue
+                    </span>
+                    <span class="icon">↗</span>
+                </a>
+
+                <a class="access-button register" href="registration-form.html">
+                    <span>
+                        <span class="number">02 / JOIN</span><br>
+                        Create an Account
+                    </span>
+                    <span class="icon">↗</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="details" id="about">
+            <article class="detail">
+                <p class="label">01 / THE STUDENT</p>
+                <h2>Ronel Gabion</h2>
+                <p>A student building skills and exploring the world of information technology.</p>
+            </article>
+
+            <article class="detail">
+                <p class="label">02 / THE COURSE</p>
+                <h2>BSIT-3B</h2>
+                <p>Bachelor of Science in Information Technology.</p>
+            </article>
+
+            <article class="detail">
+                <p class="label">03 / THE PROJECT</p>
+                <h2>Activity Three</h2>
+                <p>A homepage project featuring navigation, responsive design, and a custom visual identity.</p>
+            </article>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <span>© 2026 <strong>RONEL GABION.</strong> ALL RIGHTS RESERVED.</span>
+        <a href="#top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">BACK TO TOP ↑</a>
+    </footer>
+
+</body>
+</html>
